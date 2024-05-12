@@ -1,0 +1,39 @@
+{% import "macros.html" as macros %}
+<!DOCTYPE html>
+
+<html lang="{% block lang %}{% endblock lang %}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+
+  {% block seo %}
+    {%- set site_url = current_url | default(value=get_url(path="404.html")) -%}
+    {% set author = config.extra.author | default(value="") -%}
+    {% set description = config.description | default(value="") -%}
+    {% set image = config.extra.seo.image | default(value="") -%}
+    {% set image_height = config.extra.seo.image_height | default(value=0) -%}
+    {% set image_width = config.extra.seo.image_width | default(value=0) -%}
+  {% endblock seo %}
+
+  {% block desc %}{% endblock desc %}
+  <title>{% block title %}{% endblock title %}</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  {% include "_custom_font.html" %}
+  {% include "_custom_css.html" %}
+  <link rel="stylesheet" href="/main.css">
+  {% block head %}{% endblock head %}
+  {% include "_head_extend.html" %}
+</head>
+
+<body class="{% block page %}{% endblock page%}">
+  <script>if (localStorage.getItem('theme') == 'dark') { document.body.classList.add('dark'); const hl = document.querySelector('link#hl'); if (hl) hl.href = '/hl-dark.css'; }</script>
+  {% block content %}{% endblock content %}
+  {% block script %}{% endblock script %}
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

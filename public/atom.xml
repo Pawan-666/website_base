@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>The Oops Guy</title>
+    <subtitle>Devops and SRE stuffs</subtitle>
+    <link href="https://pawanchhetri.com.np/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://pawanchhetri.com.np"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-09-28T00:00:00+00:00</updated>
+    <id>https://pawanchhetri.com.np/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Homelab Setup</title>
+        <published>2023-09-28T00:00:00+00:00</published>
+        <updated>2023-09-28T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://pawanchhetri.com.np/blog/cloudflare-zero-trust/" type="text/html"/>
+        <id>https://pawanchhetri.com.np/blog/cloudflare-zero-trust/</id>
+        
+        <content type="html">&lt;p&gt;    After using my trusty old laptop for nearly 5 to 6 years, I noticed it had started making fan noises, even right after a fresh boot-up. Rather than retiring it or letting it gather dust, I decided to give it a new  life by transforming it into a personal homelab server. Leveraging the power of &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;cloudflare-one&#x2F;&quot;&gt;Cloudflare Zero Trust&lt;&#x2F;a&gt; and a collection of Docker containers, I embarked on a journey to create a versatile homelab environment.&lt;&#x2F;p&gt;
+&lt;p&gt;    Within this homelab, I’ve set up a range of essential services that make daily life more enjoyable and efficient. These include a media player for movies, a music and audiobook player, a book reader, server monitoring tool, webpage monitoring capabilities, and a &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;homepage.pawanchhetri.com.np&quot;&gt;nice looking homepage&lt;&#x2F;a&gt; accessible from virtually any device. What makes these services truly exceptional is their ability to accommodate multiple users, allowing family and friends to join in on the experience from anywhere.&lt;&#x2F;p&gt;
+&lt;p&gt;    To make your homelab setup as smooth as possible, I’ve  provided all the Docker Compose files you’ll need for each of these services. With them, you’ll be up and running in no time, ready to unlock the full potential of your homelab server. So, let’s dive in and see how each services  with respective docker-compose stack looks like.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#homepage&quot;&gt;Homepage&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#grafana-prometheus-nodeexporter-cadvisor&quot;&gt;Grafana, Prometheus, nodeexporter, cadvisor&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#portainer&quot;&gt;Portainer&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#uptime-kuma&quot;&gt;uptime-kuma&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#jellyfin&quot;&gt;Jellyfin&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#qbittorrent&quot;&gt;Qbittorrent&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#navidrome&quot;&gt;Navidrome&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#audiobookshelf&quot;&gt;Audiobookshelf&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#kavita&quot;&gt;Kavita&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;blog&#x2F;cloudflare-zero-trust&#x2F;#setup-requirements-and-best-practices&quot;&gt;Setup Requirements&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;homepage&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;homepage.pawanchhetri.com.np&quot;&gt;Homepage&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#homepage&quot; aria-label=&quot;Anchor link for: homepage&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Homelab bookmarks tab, access all the self hosted services and more from this page. Allows fancy graphics and stuff too but I’ve gone only text based with minimal bookmarks.yml file configuration.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-07-50.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;version: &amp;quot;3.3&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;  homepage:
+&lt;&#x2F;span&gt;&lt;span&gt;    image: ghcr.io&#x2F;benphelps&#x2F;homepage:latest
+&lt;&#x2F;span&gt;&lt;span&gt;    container_name: homepage
+&lt;&#x2F;span&gt;&lt;span&gt;    ports:
+&lt;&#x2F;span&gt;&lt;span&gt;      - 8921:3000
+&lt;&#x2F;span&gt;&lt;span&gt;    volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;      - .&#x2F;config:&#x2F;app&#x2F;config # Make sure your local config directory exists
+&lt;&#x2F;span&gt;&lt;span&gt;      - &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock:ro # (optional) For docker integrations
+&lt;&#x2F;span&gt;&lt;span&gt;    restart: unless-stopped
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;$ cat bookmarks.yaml&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;---
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;- Monitoring:
+&lt;&#x2F;span&gt;&lt;span&gt;    - Portainer:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: Pr
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;portainer.pawanchhetri.com.np&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    - Grafana:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: gf
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;grafana.pawanchhetri.com.np&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    - Uptime-kuma:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: Up
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;uptimekuma.pawanchhetri.com.np&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    - SSH:
+&lt;&#x2F;span&gt;&lt;span&gt;       - abbr: sh
+&lt;&#x2F;span&gt;&lt;span&gt;         href: https:&#x2F;&#x2F;ssh.pawanchhetri.com.np&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;- Media:
+&lt;&#x2F;span&gt;&lt;span&gt;   - Music:
+&lt;&#x2F;span&gt;&lt;span&gt;       - abbr: Mu
+&lt;&#x2F;span&gt;&lt;span&gt;         href: https:&#x2F;&#x2F;music.pawanchhetri.com.np
+&lt;&#x2F;span&gt;&lt;span&gt;   - Jellyfin:
+&lt;&#x2F;span&gt;&lt;span&gt;       - abbr: Jf
+&lt;&#x2F;span&gt;&lt;span&gt;         href: https:&#x2F;&#x2F;jellyfin.pawanchhetri.com.np
+&lt;&#x2F;span&gt;&lt;span&gt;   - Audiobook:
+&lt;&#x2F;span&gt;&lt;span&gt;       - abbr: AS
+&lt;&#x2F;span&gt;&lt;span&gt;         href: https:&#x2F;&#x2F;audiobook.pawanchhetri.com.np
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;- Reading:
+&lt;&#x2F;span&gt;&lt;span&gt;    - Blog:
+&lt;&#x2F;span&gt;&lt;span&gt;       - abbr: Bl
+&lt;&#x2F;span&gt;&lt;span&gt;         href: https:&#x2F;&#x2F;pawanchhetri.com.np&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    - Books:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: KV
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;books.pawanchhetri.com.np
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;- Social:
+&lt;&#x2F;span&gt;&lt;span&gt;    - Reddit:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: RE
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;reddit.com&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    - YouTube:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: YT
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;youtube.com&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    - LinkendIn:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: LN
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;www.linkedin.com&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    - Github:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: GH
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;github.com&#x2F;Pawan-666&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    - Feedly:
+&lt;&#x2F;span&gt;&lt;span&gt;        - abbr: rss
+&lt;&#x2F;span&gt;&lt;span&gt;          href: https:&#x2F;&#x2F;feedly.com&#x2F;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;grafana-prometheus-nodeexporter-cadvisor&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;grafana.pawanchhetri.com.np&quot;&gt;Grafana Prometheus Nodeexporter Cadvisor&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#grafana-prometheus-nodeexporter-cadvisor&quot; aria-label=&quot;Anchor link for: grafana-prometheus-nodeexporter-cadvisor&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;For server and docker containers monitoring I’ve used Grafana. Helps to monitor the server CPU,Memory,Network status.
+&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-09-13-33.png&quot; alt=&quot;&quot; &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-09-12-52.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;version: &amp;#39;3.3&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;``    node-exporter:
+&lt;&#x2F;span&gt;&lt;span&gt;      # ports localhost:9100&#x2F;metrics
+&lt;&#x2F;span&gt;&lt;span&gt;        network_mode: host
+&lt;&#x2F;span&gt;&lt;span&gt;        pid: host
+&lt;&#x2F;span&gt;&lt;span&gt;        volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;#39;&#x2F;:&#x2F;host:ro,rslave&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;        image: &amp;#39;quay.io&#x2F;prometheus&#x2F;node-exporter:latest&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    prometheus:
+&lt;&#x2F;span&gt;&lt;span&gt;        container_name: prometheus
+&lt;&#x2F;span&gt;&lt;span&gt;        ports:
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;#39;9091:9090&amp;#39; #modify 9091 to your setup needs
+&lt;&#x2F;span&gt;&lt;span&gt;        volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;#39;.&#x2F;Configs&#x2F;Prometheus&#x2F;prometheus.yml:&#x2F;etc&#x2F;prometheus&#x2F;prometheus.yml&amp;#39; #modify the path for your install location
+&lt;&#x2F;span&gt;&lt;span&gt;        image: prom&#x2F;prometheus
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    cadvisor:
+&lt;&#x2F;span&gt;&lt;span&gt;      image: gcr.io&#x2F;cadvisor&#x2F;cadvisor
+&lt;&#x2F;span&gt;&lt;span&gt;      container_name: cadvisor
+&lt;&#x2F;span&gt;&lt;span&gt;      ports:
+&lt;&#x2F;span&gt;&lt;span&gt;        - 8080:8080
+&lt;&#x2F;span&gt;&lt;span&gt;      volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;        - &#x2F;:&#x2F;rootfs:ro
+&lt;&#x2F;span&gt;&lt;span&gt;        - &#x2F;var&#x2F;run:&#x2F;var&#x2F;run:rw
+&lt;&#x2F;span&gt;&lt;span&gt;        - &#x2F;sys:&#x2F;sys:ro
+&lt;&#x2F;span&gt;&lt;span&gt;        - &#x2F;var&#x2F;lib&#x2F;docker:&#x2F;var&#x2F;lib&#x2F;docker:ro
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    grafana:            # admin&#x2F;admin default username&#x2F;password
+&lt;&#x2F;span&gt;&lt;span&gt;        container_name: grafana
+&lt;&#x2F;span&gt;&lt;span&gt;        ports:
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;#39;3457:3000&amp;#39; #modify 3457 to your setup needs
+&lt;&#x2F;span&gt;&lt;span&gt;        image: grafana&#x2F;grafana
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;$ cat prometheus.yml&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;global:
+&lt;&#x2F;span&gt;&lt;span&gt;  scrape_interval: 5s
+&lt;&#x2F;span&gt;&lt;span&gt;  external_labels:
+&lt;&#x2F;span&gt;&lt;span&gt;    monitor: &amp;#39;node&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;scrape_configs:
+&lt;&#x2F;span&gt;&lt;span&gt;  - job_name: &amp;#39;prometheus&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    static_configs:
+&lt;&#x2F;span&gt;&lt;span&gt;      - targets: [&amp;#39;192.168.1.68:9090&amp;#39;] ## IP Address of the localhost. Match the port to your container port
+&lt;&#x2F;span&gt;&lt;span&gt;  - job_name: &amp;#39;node-exporter&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    static_configs:
+&lt;&#x2F;span&gt;&lt;span&gt;      - targets: [&amp;#39;192.168.1.68:9100&amp;#39;] ## IP Address of the localhost
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  - job_name: &amp;#39;docker-metrics&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    scrape_interval: 5s
+&lt;&#x2F;span&gt;&lt;span&gt;    static_configs:
+&lt;&#x2F;span&gt;&lt;span&gt;      - targets: [&amp;#39;192.168.1.68:9323&amp;#39;]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  - job_name: &amp;#39;cAvisor&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    static_configs:
+&lt;&#x2F;span&gt;&lt;span&gt;      - targets: [&amp;#39;192.168.1.68:8080&amp;#39;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;portainer&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;portainer.pawanchhetri.com.np&quot;&gt;Portainer&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#portainer&quot; aria-label=&quot;Anchor link for: portainer&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;I prefer and use terminal to deploy containers but portainer does provide nice gui to deploy docker stuffs with nice visualizations, bells and whistles.
+&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-17-59.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;version: &amp;quot;3.7&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;  portainer:
+&lt;&#x2F;span&gt;&lt;span&gt;    image: portainer&#x2F;portainer-ce:2.11.0-alpine # Replace 2.11.0 with the latest version.
+&lt;&#x2F;span&gt;&lt;span&gt;    command: -H unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock
+&lt;&#x2F;span&gt;&lt;span&gt;    restart: always
+&lt;&#x2F;span&gt;&lt;span&gt;    volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;      - &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock
+&lt;&#x2F;span&gt;&lt;span&gt;      - &#x2F;volume1&#x2F;docker&#x2F;config&#x2F;Portainer:&#x2F;data
+&lt;&#x2F;span&gt;&lt;span&gt;    ports:
+&lt;&#x2F;span&gt;&lt;span&gt;      - 9443:9443
+&lt;&#x2F;span&gt;&lt;span&gt;    healthcheck:
+&lt;&#x2F;span&gt;&lt;span&gt;      test: [&amp;#39;CMD&amp;#39;, &amp;#39;wget&amp;#39;, &amp;#39;--spider&amp;#39;, &amp;#39;localhost:9000&amp;#39;]
+&lt;&#x2F;span&gt;&lt;span&gt;      interval: 15s # Amount of time after it starts checking for readiness
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;uptime-kuma&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;uptimekuma.pawanchhetri.com.np&quot;&gt;Uptime-kuma&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#uptime-kuma&quot; aria-label=&quot;Anchor link for: uptime-kuma&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Fantastic to monitor websites(up or not), latency and ssl cert expiry date, You can even share the status page with clients.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-20-54.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;version: &amp;#39;3&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;  uptime-kuma:
+&lt;&#x2F;span&gt;&lt;span&gt;    image: louislam&#x2F;uptime-kuma:1.23.2
+&lt;&#x2F;span&gt;&lt;span&gt;    container_name: uptime-kuma
+&lt;&#x2F;span&gt;&lt;span&gt;    restart: always
+&lt;&#x2F;span&gt;&lt;span&gt;    ports:
+&lt;&#x2F;span&gt;&lt;span&gt;      - &amp;quot;3001:3001&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;      - .&#x2F;data:&#x2F;app&#x2F;data
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;jellyfin&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;jellyfin.pawanchhetri.com.np&quot;&gt;Jellyfin&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#jellyfin&quot; aria-label=&quot;Anchor link for: jellyfin&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Your netflix at home. Also has plugin for subtitle download.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-24-30.png&quot; alt=&quot;&quot; &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-27-57.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;version: &amp;#39;3.3&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;    jellyfin:
+&lt;&#x2F;span&gt;&lt;span&gt;        volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;#39;.&#x2F;config:&#x2F;config&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;#39;.&#x2F;cache:&#x2F;cache&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;#39;&#x2F;home&#x2F;pawan&#x2F;Storage&#x2F;movies&#x2F;:&#x2F;media&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;        ports:
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;#39;8096:8096&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;        container_name: jellyfin
+&lt;&#x2F;span&gt;&lt;span&gt;        restart: unless-stopped
+&lt;&#x2F;span&gt;&lt;span&gt;        image: jellyfin&#x2F;jellyfin
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;qbittorrent&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;qbittorrent.pawanchhetri.com.np&#x2F;&quot;&gt;Qbittorrent&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#qbittorrent&quot; aria-label=&quot;Anchor link for: qbittorrent&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;This is a basic requirement to add movies and series to your jellyfin server. I don’t use it and don’t recommend it either !.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-09-17-25.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;---
+&lt;&#x2F;span&gt;&lt;span&gt;version: &amp;quot;2.1&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;  qbittorrent:
+&lt;&#x2F;span&gt;&lt;span&gt;    image: lscr.io&#x2F;linuxserver&#x2F;qbittorrent:latest
+&lt;&#x2F;span&gt;&lt;span&gt;    container_name: qbittorrent
+&lt;&#x2F;span&gt;&lt;span&gt;    environment:
+&lt;&#x2F;span&gt;&lt;span&gt;      - PUID=1000
+&lt;&#x2F;span&gt;&lt;span&gt;      - PGID=1000
+&lt;&#x2F;span&gt;&lt;span&gt;      - TZ=Etc&#x2F;UTC
+&lt;&#x2F;span&gt;&lt;span&gt;      - WEBUI_PORT=8081
+&lt;&#x2F;span&gt;&lt;span&gt;    volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;      - .&#x2F;config:&#x2F;config
+&lt;&#x2F;span&gt;&lt;span&gt;      - &#x2F;home&#x2F;pawan&#x2F;Storage&#x2F;movies&#x2F;torrent:&#x2F;downloads
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    ports:
+&lt;&#x2F;span&gt;&lt;span&gt;      - 8081:8081
+&lt;&#x2F;span&gt;&lt;span&gt;      - 6881:6881
+&lt;&#x2F;span&gt;&lt;span&gt;      - 6881:6881&#x2F;udp
+&lt;&#x2F;span&gt;&lt;span&gt;    restart: unless-stopped
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;navidrome&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;music.pawanchhetri.com.np&quot;&gt;Navidrome&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#navidrome&quot; aria-label=&quot;Anchor link for: navidrome&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Nice music player, especially great for those who prefer listening music with full albums like I do. It has android clients too.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-29-53.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;version: &amp;quot;3&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;  navidrome:
+&lt;&#x2F;span&gt;&lt;span&gt;    image: deluan&#x2F;navidrome:latest
+&lt;&#x2F;span&gt;&lt;span&gt;    # user: 1000:1000 # should be owner of volumes
+&lt;&#x2F;span&gt;&lt;span&gt;    ports:
+&lt;&#x2F;span&gt;&lt;span&gt;      - &amp;quot;4533:4533&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    restart: unless-stopped
+&lt;&#x2F;span&gt;&lt;span&gt;    environment:
+&lt;&#x2F;span&gt;&lt;span&gt;      # Optional: put your config options customization here. Examples:
+&lt;&#x2F;span&gt;&lt;span&gt;      ND_SCANSCHEDULE: 1h
+&lt;&#x2F;span&gt;&lt;span&gt;      ND_LOGLEVEL: info  
+&lt;&#x2F;span&gt;&lt;span&gt;      ND_SESSIONTIMEOUT: 24h
+&lt;&#x2F;span&gt;&lt;span&gt;      ND_BASEURL: &amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;      - &amp;quot;.&#x2F;data:&#x2F;data&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;      - &amp;quot;&#x2F;home&#x2F;pawan&#x2F;Music&#x2F;:&#x2F;music:ro&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;audiobookshelf&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;audiobook.pawanchhetri.com.np&quot;&gt;Audiobookshelf&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#audiobookshelf&quot; aria-label=&quot;Anchor link for: audiobookshelf&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Same as the music player above but for audiobooks and podcasts.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-35-29.png&quot; alt=&quot;&quot; &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-09-57-01.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;version: &amp;quot;3.7&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;  audiobookshelf:
+&lt;&#x2F;span&gt;&lt;span&gt;    image: ghcr.io&#x2F;advplyr&#x2F;audiobookshelf:latest
+&lt;&#x2F;span&gt;&lt;span&gt;    container_name: audiobookshelf
+&lt;&#x2F;span&gt;&lt;span&gt;    ports:
+&lt;&#x2F;span&gt;&lt;span&gt;      - 13378:80
+&lt;&#x2F;span&gt;&lt;span&gt;    volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;      - &#x2F;home&#x2F;pawan&#x2F;Storage&#x2F;movies&#x2F;AudioBooks:&#x2F;audiobooks
+&lt;&#x2F;span&gt;&lt;span&gt;      - &#x2F;home&#x2F;pawan&#x2F;Storage&#x2F;movies&#x2F;podcast:&#x2F;podcasts
+&lt;&#x2F;span&gt;&lt;span&gt;      - .&#x2F;config&#x2F;:&#x2F;config
+&lt;&#x2F;span&gt;&lt;span&gt;      - .&#x2F;metadata&#x2F;:&#x2F;metadata
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;kavita&quot;&gt;&lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;books.pawanchhetri.com.np&quot;&gt;Kavita&lt;&#x2F;a&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#kavita&quot; aria-label=&quot;Anchor link for: kavita&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;An online book reader. I don’t like reading softcopy books tho. Ctrl+c&#x2F;v code snippets from technical books is useful at times and it helps to have a softcopy even if you have a hardcopy for this purpose only.
+&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-39-05.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2e3440;color:#d8dee9;&quot;&gt;&lt;code&gt;&lt;span&gt;version: &amp;#39;3.9&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;services:
+&lt;&#x2F;span&gt;&lt;span&gt;    kavita:
+&lt;&#x2F;span&gt;&lt;span&gt;        image: kizaing&#x2F;kavita:latest
+&lt;&#x2F;span&gt;&lt;span&gt;        volumes:
+&lt;&#x2F;span&gt;&lt;span&gt;            - &#x2F;home&#x2F;pawan&#x2F;Storage&#x2F;Bokks&#x2F;Books:&#x2F;manga
+&lt;&#x2F;span&gt;&lt;span&gt;            - .&#x2F;data:&#x2F;kavita&#x2F;config
+&lt;&#x2F;span&gt;&lt;span&gt;        ports:
+&lt;&#x2F;span&gt;&lt;span&gt;            - &amp;quot;5000:5000&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        restart: unless-stopped
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;h4 id=&quot;setup-requirements-and-best-practices&quot;&gt;Setup requirements and best practices&lt;a class=&quot;zola-anchor&quot; href=&quot;#setup-requirements-and-best-practices&quot; aria-label=&quot;Anchor link for: setup-requirements-and-best-practices&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Machine with a GNU&#x2F;linux os 
+&lt;ul&gt;
+&lt;li&gt;You can run a linux vm with bridge networking set up&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Setting up static ip on your server for ip persistence&lt;&#x2F;li&gt;
+&lt;li&gt;Knowledge of how docker containers work and how to deploy them using docker-compose&lt;&#x2F;li&gt;
+&lt;li&gt;A domain name &lt;&#x2F;li&gt;
+&lt;li&gt;Setting domains in Cloudflare&lt;&#x2F;li&gt;
+&lt;li&gt;Using &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;cloudflare-one&#x2F;&quot;&gt;cloudflare zero trust&lt;&#x2F;a&gt; to map subdomains to the docker containers&lt;&#x2F;li&gt;
+&lt;li&gt;Desire to learn and troubleshoot, part of the process&lt;&#x2F;li&gt;
+&lt;li&gt;Setting strong passwords for each service&lt;&#x2F;li&gt;
+&lt;li&gt;Monitoring your server so that it doesn’t burn!&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;br &#x2F;&gt;
+I&#x27;ve also set up Cloudflare Access to ssh into my machine from the browser itself. A directory is set for each docker-compose stack. Helps to keep configuration easy and clean as they should.
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-10-07-08-56-38.png&quot; alt=&quot;&quot; &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;br &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Surf the subreddit &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;selfhosted&#x2F;&quot;&gt;selfhosted&lt;&#x2F;a&gt; for more awesomeness.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Terraform &amp; Ansible</title>
+        <published>2023-04-12T00:00:00+00:00</published>
+        <updated>2023-04-12T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://pawanchhetri.com.np/blog/terraform-ansible/" type="text/html"/>
+        <id>https://pawanchhetri.com.np/blog/terraform-ansible/</id>
+        
+        <content type="html">&lt;p&gt;   In this blog post, we will explore how DevOps teams can leverage IAC tools to simplify their infrastructure management and deployment processes using terraform and then ansible one after other. 
+I’m going to make a server on AWS using Terraform and configure server, install necessary packages  using ansible for web page deployment which will display &lt;code&gt;Hello World!&lt;&#x2F;code&gt; on its port 80.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;terraform&quot;&gt;Terraform&lt;a class=&quot;zola-anchor&quot; href=&quot;#terraform&quot; aria-label=&quot;Anchor link for: terraform&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-04-18-21-27-20.png&quot; alt=&quot;&quot; &#x2F;&gt;
+    &lt;strong&gt;Terraform&lt;&#x2F;strong&gt; is an open-source tool for managing infrastructure resources as code, allowing developers to define and manage their infrastructure declaratively using a configuration file. It supports multiple cloud providers and on-premises infrastructure and provides a consistent and repeatable way to provision and manage resources. Prior to running the code and commands below you should have an aws account(free-tier works too), terraform and ansible installed. Make an IAM user and set &lt;a rel=&quot;nofollow noreferrer&quot; href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;cli&#x2F;latest&#x2F;userguide&#x2F;getting-started-install.html&quot;&gt;aws_cli&lt;&#x2F;a&gt; on your local machine to use that user’s IAM credentials. AWS uses the concept of Identity Access Management(IAM) to manage resource allocation to different users&#x2F;groups and this allows us to use different IAM setup for different projects. &lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;cat main.tf&lt;&#x2F;code&gt;    #make this file in any directory you want&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2e3440;color:#d8dee9;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;#making resources in Singapore
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#88c0d0;&quot;&gt;provider &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;aws&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;{      
+&lt;&#x2F;span&gt;&lt;span&gt;  region  = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;ap-southeast-1&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;#supply your pc public key, type ssh-keygen and press enter multiple times to create new
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#88c0d0;&quot;&gt;resource &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;aws_key_pair&amp;quot; &amp;quot;key_pair&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  key_name = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;mynewkeypair&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;  public_key = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span&gt;file(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&#x2F;home&#x2F;pawan&#x2F;.ssh&#x2F;id_rsa.pub&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;}&amp;quot;  
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;#making a free-tier ubuntu virtual machine
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#88c0d0;&quot;&gt;resource &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;aws_instance&amp;quot; &amp;quot;web_server&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;{     
+&lt;&#x2F;span&gt;&lt;span&gt;  ami           = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;ami-0a72af05d27b49ccb&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;  instance_type = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;t2.micro&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;  key_name      = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;mynewkeypair&amp;quot;  
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  tags = {
+&lt;&#x2F;span&gt;&lt;span&gt;    Name = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;WebServerInstance&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  vpc_security_group_ids = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span&gt;aws_security_group.web_server_sg.id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;#adding firewall&#x2F;security_group rules for ssh,http and outgoing traffic
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#88c0d0;&quot;&gt;resource &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;aws_security_group&amp;quot; &amp;quot;web_server_sg&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;{    
+&lt;&#x2F;span&gt;&lt;span&gt;  name_prefix = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;web_server_sg&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  ingress {
+&lt;&#x2F;span&gt;&lt;span&gt;    from_port = 22
+&lt;&#x2F;span&gt;&lt;span&gt;    to_port   = 22
+&lt;&#x2F;span&gt;&lt;span&gt;    protocol  = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;tcp&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    cidr_blocks = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;0.0.0.0&#x2F;0&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  ingress {
+&lt;&#x2F;span&gt;&lt;span&gt;    from_port = 80
+&lt;&#x2F;span&gt;&lt;span&gt;    to_port   = 80
+&lt;&#x2F;span&gt;&lt;span&gt;    protocol  = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;tcp&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    cidr_blocks = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;0.0.0.0&#x2F;0&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  egress {
+&lt;&#x2F;span&gt;&lt;span&gt;    from_port   = 0
+&lt;&#x2F;span&gt;&lt;span&gt;    to_port     = 0
+&lt;&#x2F;span&gt;&lt;span&gt;    protocol    = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;-1&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    cidr_blocks = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;0.0.0.0&#x2F;0&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;#data blocks invokes the previously deployed resources
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#88c0d0;&quot;&gt;data &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;aws_instance&amp;quot; &amp;quot;web_server_data&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  instance_id = aws_instance.web_server.id
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;#displaying the public ip of the server on terminal
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#88c0d0;&quot;&gt;output &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;public_ip&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;{   
+&lt;&#x2F;span&gt;&lt;span&gt;  value = data.aws_instance.web_server_data.public_ip
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;It’s essential that you execute the commands below from the same directory where the above file is at.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;terraform init&lt;&#x2F;code&gt;  #checks all the configuration files inside the current working directory and downloads the plugins required according to the resources defined&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-04-12-14-52-03.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;terraform plan&lt;&#x2F;code&gt; #shows what is going to be provisioned in details if applied&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-04-12-14-55-54.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;terraform apply&lt;&#x2F;code&gt; #when we do &lt;code&gt;terraform apply&lt;&#x2F;code&gt; it prompts us for conformation, we should reply it with &lt;code&gt;yes&lt;&#x2F;code&gt; to proceed to provision the server on aws .&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-04-12-15-21-43.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;public_ip&lt;&#x2F;code&gt; variable is set above to display the public ip of the server, which ansible will use  to ssh into the machine and run the ansible_playbook which we’ll write below.&lt;&#x2F;p&gt;
+&lt;p&gt;We can check the aws console on the browser to confirm the above terraform configuration.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-04-12-15-28-42.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;code&gt;Name&lt;&#x2F;code&gt; supplied in the above &lt;code&gt;main.tf&lt;&#x2F;code&gt; matches with the configured server and the public_ip is same as displayed during &lt;code&gt;terraform apply&lt;&#x2F;code&gt;. Make note of that ip, since we’ll be using this ip to provision web server. Do ssh into this new machine and add the id_rsa.pub file into the new server.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;ssh ubuntu@54.255.87.157&lt;&#x2F;code&gt;  #ssh should work , which is the necessay condition to run the below ansible playbook&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ansible&quot;&gt;Ansible&lt;a class=&quot;zola-anchor&quot; href=&quot;#ansible&quot; aria-label=&quot;Anchor link for: ansible&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;    &lt;strong&gt;Ansible&lt;&#x2F;strong&gt; is an open-source automation tool that allows developers to automate the deployment and management of infrastructure resources. It uses YAML to define infrastructure as code and supports multiple operating systems and cloud providers. Ansible is agentless, making it easy to manage and scale infrastructure environments. Ansible uses a main file considered as playbook which contains instructions to run on remote servers.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;cat aws_playbook.yml&lt;&#x2F;code&gt;  #make a file called aws_playbook and paste this content&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;yaml&quot; style=&quot;background-color:#2e3440;color:#d8dee9;&quot; class=&quot;language-yaml &quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span&gt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Getting new servers IP address
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;hosts&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;localhost
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;gather_facts&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;no
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;vars_prompt&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;#prompts to ask server public ip
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;target_host
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;prompt&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Please provide the IP of the new server
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;private&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;no
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;tasks&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;add_host&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;name=&amp;quot;{{ target_host }}&amp;quot; groups=dynamically_created_hosts
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Preapring the new server
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;remote_user&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ubuntu
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;hosts&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;dynamically_created_hosts   
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;gather_facts&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;no
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;become&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;yes
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;become_user&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;root
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;become_method&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;sudo
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;vars&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;ansible_ssh_port&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;22
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;tasks&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Update and Upgrade apt packages to the latest available
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;apt&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;update_cache&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;yes
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;cache_valid_time&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;3600
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;upgrade&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;yes
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Installing necessary packages 
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;apt&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;name={{ item }} state=present
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;with_items&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;        - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;vim
+&lt;&#x2F;span&gt;&lt;span&gt;        - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;tmux
+&lt;&#x2F;span&gt;&lt;span&gt;        - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;nginx
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Enable ufw firewall
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;ufw&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;state&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;enabled
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;rule&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;allow
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;proto&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;tcp
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;port&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;{{ item }}&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;with_items&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;        - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;22
+&lt;&#x2F;span&gt;&lt;span&gt;        - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;80
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Create &amp;quot;Hello World&amp;quot; HTML file 
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;copy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;content&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&amp;lt;h1&amp;gt;Hello World&amp;lt;&#x2F;h1&amp;gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;dest&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&#x2F;var&#x2F;www&#x2F;html&#x2F;index.html&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;mode&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;0644&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Start Nginx service
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;service&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;nginx
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;state&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;started
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fbcbb;&quot;&gt;enabled&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;true
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;ansible-playbook  aws_playbook.yml&lt;&#x2F;code&gt;   #runs the above file, which asks for the public_ip of the server we just provisioned above.
+&lt;img src=&quot;&#x2F;images&#x2F;2023-04-12-16-55-20.png&quot; alt=&quot;&quot; &#x2F;&gt;
+   The yellow color lines are the changes made on the server and green ones are not changed, since those configurations exist already. Ansible follows the idempotency philoshopy, thus no matter how many times you run this file, only the new changes are going to be applied, the changes which align with the configuration files remain unchanged.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2023-04-12-17-03-32.png&quot; alt=&quot;&quot; &#x2F;&gt;
+Btw, our web server is up.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;terraform destroy&lt;&#x2F;code&gt;   #this deletes the sever from the aws, it prompts us and we have to supply &lt;code&gt;yes&lt;&#x2F;code&gt; to delete the server
+&lt;img src=&quot;&#x2F;images&#x2F;2023-04-12-17-05-32.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;If we refresh the aws console, it says that web server is terminated, which gets removed after a while.&lt;img src=&quot;&#x2F;images&#x2F;2023-04-12-17-06-37.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;   You can add more stuffs to both the terraform and ansible files above to do much more. &lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Images above are scraped through kodekloud,google except screenshots&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Hello, world!</title>
+        <published>2023-04-01T00:00:00+00:00</published>
+        <updated>2023-04-01T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://pawanchhetri.com.np/blog/hello-world/" type="text/html"/>
+        <id>https://pawanchhetri.com.np/blog/hello-world/</id>
+        
+        <content type="html">&lt;h2 id=&quot;welcome-to-my-blog&quot;&gt;Welcome to my blog!&lt;a class=&quot;zola-anchor&quot; href=&quot;#welcome-to-my-blog&quot; aria-label=&quot;Anchor link for: welcome-to-my-blog&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;Hi there! 👋🏽 I’m an Devops engineer currently practicing some SRE stuffs. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-will-i-focus-on-in-this-blog&quot;&gt;What will I focus on in this blog?&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-will-i-focus-on-in-this-blog&quot; aria-label=&quot;Anchor link for: what-will-i-focus-on-in-this-blog&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;I’ll be writing some technical blogs and stuffs.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tools-used-for-this-site-hosting&quot;&gt;tools used for this site hosting&lt;a class=&quot;zola-anchor&quot; href=&quot;#tools-used-for-this-site-hosting&quot; aria-label=&quot;Anchor link for: tools-used-for-this-site-hosting&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;zola&lt;&#x2F;li&gt;
+&lt;li&gt;github&lt;&#x2F;li&gt;
+&lt;li&gt;cloudflare pages&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;and-that-s-that&quot;&gt;And that’s that…&lt;a class=&quot;zola-anchor&quot; href=&quot;#and-that-s-that&quot; aria-label=&quot;Anchor link for: and-that-s-that&quot;&gt;#&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;I’ll make it a point to try and write as often as possible&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

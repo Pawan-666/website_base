@@ -1,0 +1,33 @@
+[[project]]
+name = "Gitops"
+desc = "Gitops using jenkins, eks, argocd"
+tags = ["gitops", "k8s", "jenkins", "eks"]
+links = [
+    {name = "github1", url = "https://github.com/Pawan-666/gitops-1"},
+    {name = "github2", url = "https://github.com/Pawan-666/git-ops2"},
+]
+
+[[project]]
+name = "100days python"
+desc = "100 days of python bootcamp"
+tags = ["python"]
+links = [
+    {name = "github", url = "https://github.com/Pawan-666/100days-python"},
+]
+
+[[project]]
+name = "macos dotfiles"
+desc = "dotfiles for macos"
+tags = ["macos", "vim", "lvim", "mpv", "lf", "alacritty", "tmux", "zsh"]
+links = [
+    {name = "github", url = "https://github.com/Pawan-666/mac_dotfiles"},
+]
+
+[[project]]
+name = "linux dotfiles"
+desc = "dotfiles for linux desktop"
+tags = ["linux", "vim", "bspwm", "i3", "lvim", "tmux", "mpv", "lf", "alacritty"]
+links = [
+    {name = "github", url = "https://github.com/Pawan-666/linux_dotfiles"},
+]
+

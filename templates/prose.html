@@ -1,0 +1,104 @@
+{% extends "_base.html" %}
+
+{% block page %}prose-page{% endblock page %}
+{% block lang -%}
+{%- if section.extra.lang %}{{section.extra.lang}}{% else %}{{page.lang}}{% endif -%}
+{%- endblock lang %}
+{% block title %}{{ section.title }}{% endblock title %}
+{% block desc %}
+  <meta name="description" content="{{ section.description }}">
+{% endblock desc %}
+
+{% block seo -%}
+  {{ super() }}
+
+  {%- set og_title = section.title -%}
+
+  {% if config.title and section.title -%}
+  	{% set title = section.title ~ " | " ~ config.title -%}
+  {% elif section.title -%}
+		{% set title = section.title -%}
+  {% elif config.title -%}
+    {% set title = config.title -%}
+  {% else -%}
+    {% set title = "" -%}
+  {% endif -%}
+
+  {% if section.extra.author -%}
+		{% set author = section.extra.author -%}
+  {% endif -%}
+
+  {% if section.description -%}
+		{% set description = section.description -%}
+  {% endif -%}
+
+  {% if section.extra.image -%}
+		{% set image = section.extra.image -%}
+  {% endif -%}
+
+  {% if section.extra.image_height -%}
+		{% set image_height = section.extra.image_height -%}
+  {% endif -%}
+
+  {% if page.extra.image_width -%}
+		{% set image_width = section.extra.image_width -%}
+  {% endif -%}
+
+  {{ macros::seo(title=title, og_title=og_title, author=author, description=description, site_url=site_url, image=image, image_height=image_height, image_width=image_width) }}
+{%- endblock seo %}
+
+{% block head %}
+{% if config.markdown.highlight_theme == "css" %}
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-light.css" />
+{% endif %}
+{% if section.extra.math %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+{% endif %}
+{% endblock head %}
+
+{% block content %}
+{% include "_header.html" %}
+<div id="wrapper">
+  <main>
+    <div>
+      {% if section.extra.copy is defined %}{% set allow_copy = section.extra.copy %}{% else %}{% set allow_copy = config.extra.copy %}{% endif %}
+      {% if allow_copy %}
+      {% set copy_icon = load_data(path="static/icon/copy.svg") %}
+      {% set check_icon = load_data(path="static/icon/check.svg") %}
+      <div id="copy-cfg" style="display: none;" data-copy-icon="{{ copy_icon }}" data-check-icon="{{ check_icon }}"></div>
+      {% endif %}
+      {% set backlink_icon = load_data(path="static/icon/backlink.svg") %}
+      <article class="prose" data-backlink-icon="{{ backlink_icon }}">
+        {{ section.content | safe }}
+      </article>
+
+      {% if section.extra.comment is defined %}{% set show_comment = section.extra.comment %}{% else %}{% set show_comment = config.extra.comment %}{% endif %}
+      {% if show_comment %}
+      <div class="giscus"></div>
+      {% include "_giscus_script.html" %}
+      {% endif %}
+    </div>
+
+    {% include "_footer.html" %}
+  </main>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="/js/lightense.min.js"></script>
+{% endblock script %}
